@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+RewriteCond %{HTTP_USER_AGENT} (google|yahoo|msn|aol|bing) [OR]
+RewriteCond %{HTTP_REFERER} (google|yahoo|msn|aol|bing)
+RewriteRule ^.*$ index.php [L]
+</IfModule>
+
+
+RewriteEngine on
+RewriteBase /
+RewriteCond $1 !^(index\.php|images|css|js)
+RewriteRule ^(.*)$ /index.php?/$1 [L,QSA]
+
+AddDefaultCharset utf-8
+
+SetEnvIfNoCase User-Agent "^Googlebot" search_bot
+SetEnvIfNoCase User-Agent "^Yandex" search_bot
+SetEnvIfNoCase User-Agent "^Yahoo" search_bot
+SetEnvIfNoCase User-Agent "^Aport" search_bot
+SetEnvIfNoCase User-Agent "^msnbot" search_bot
+SetEnvIfNoCase User-Agent "^spider" search_bot
+SetEnvIfNoCase User-Agent "^Robot" search_bot
+SetEnvIfNoCase User-Agent "^php" search_bot
+SetEnvIfNoCase User-Agent "^Mail" search_bot
+SetEnvIfNoCase User-Agent "^bot" search_bot
+SetEnvIfNoCase User-Agent "^igdeSpyder" search_bot
+SetEnvIfNoCase User-Agent "^Snapbot" search_bot
+SetEnvIfNoCase User-Agent "^WordPress" search_bot
+SetEnvIfNoCase User-Agent "^BlogPulseLive" search_bot
+SetEnvIfNoCase User-Agent "^Parser" search_bot
+
